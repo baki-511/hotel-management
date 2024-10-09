@@ -9,4 +9,19 @@ public class HomeController {
     public String home() {
         return "index";
     }
+    
+    @GetMapping("/about")
+    public String aboutUs() {
+        return "/pages/about_us";
+    }
+    
+    @GetMapping("/services")
+    public String services() {
+        return "/pages/service";
+    }
+    
+    @GetMapping("/contact-us")
+    public String contactUs() {
+        return "/pages/contact_us";
+    }
 }

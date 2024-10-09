@@ -5,38 +5,24 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Home Page</title>
+    <title>About Us</title>
     <div th:replace="~{common :: common(~{::link})}"></div>
 </head>
 <body>
 <!--    Navbar section-->
 <header th:replace="~{components/navbar :: navbar}"></header>
 
-<!--    Banner Section -->
-<section th:replace="~{components/banner :: banner}"></section>
-
-<!--    About Section -->
-<section th:replace="~{components/about :: about}"></section>
-
-<!--Rooms Section -->
-<section th:replace="~{components/rooms :: rooms}"></section>
-
-<!--Service Section -->
-<section th:replace="~{components/services :: services}"></section>
-
-<!--Blog Section -->
-<section th:replace="~{components/blog :: blog}"></section>
-
-
+<!-- Contact Us Section -->
+<div th:replace="~{components/titleFragment :: section_title('Services')}"></div>
+<div th:replace="~{components/services :: services}"></div>
 
 <!--    Footer Section -->
 <section th:replace="~{components/footer :: footer}"></section>
 
-
-
+<!--Common Js -->
 <div th:replace="~{common :: common_js(~{::script})}"></div>
 
-
+<!--Main Js-->
 <script th:src=@{/main.js}></script>
 </body>
 </html>

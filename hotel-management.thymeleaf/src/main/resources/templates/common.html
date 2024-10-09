@@ -1,15 +1,47 @@
 <!doctype html>
 <html lang="en">
 <head th:fragment="common(links)">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" th:href=@{/images/favicon.png}/>
+
+    <!-- Bootstrap 5 CDN Link  -->
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+    />
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Swiper Link  -->
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" th:href=@{/css/common/lightbox.css}>
     <link rel="stylesheet" th:href=@{/css/common/style.css}>
+    <link rel="stylesheet" th:href=@{/css/common/responsive-style.css}>
+
+<!--    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>-->
 </head>
 <body>
 
 
 <div th:fragment="common_js(links)">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+<!--    <script th:src=@{/js/common/script.js}></script>-->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
+
+    <!-- Swiper Js Link   -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+
+    <!-- Custom Js Link  -->
     <script th:src=@{/js/common/script.js}></script>
+
+<!--     LightBox Js  -->
+    <script th:src=@{js/common/lightbox-plus-jquery.js}></script>
 </div>
 </body>
 </html>

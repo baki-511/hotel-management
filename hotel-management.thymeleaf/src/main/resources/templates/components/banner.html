@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Banner</title>
+</head>
+<body>
+<section id="home" class="banner_wrapper p-0" th:fragment="banner">
+    <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+            <!-- Slides -->
+            <div
+                    class="swiper-slide"
+                    style="background-image: url(./images/slider/slider1.webp)"
+            >
+                <div class="slide-caption text-center">
+                    <div>
+                        <h1>Welcome to hotel in Dubai</h1>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem
+                            enim dolorem facilis amet maiores aut nihil, at provident
+                            veritatis consectetur.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div
+                    class="swiper-slide"
+                    style="background-image: url(./images/slider/slider2.webp)"
+            >
+                <div class="slide-caption text-center">
+                    <div>
+                        <h1>Welcome to hotel in Dubai</h1>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem
+                            enim dolorem facilis amet maiores aut nihil, at provident
+                            veritatis consectetur.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--  pagination -->
+        <div class="swiper-pagination"></div>
+    </div>
+    <div class="container booking-area">
+        <form action="" class="row">
+            <div class="col-lg mb-3 mb-lg-0">
+                <input type="date" class="form-control" placeholder="date" />
+            </div>
+            <div class="col-lg mb-3 mb-lg-0">
+                <input type="date" class="form-control" placeholder="date" />
+            </div>
+            <div class="col-lg mb-3 mb-lg-0">
+                <select class="form-select">
+                    <option value="" selected>Adults</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                </select>
+            </div>
+            <div class="col-lg mb-3 mb-lg-0">
+                <select class="form-select">
+                    <option value="" selected>Childern</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                </select>
+            </div>
+            <div class="col-lg mb-3 mb-lg-0">
+                <button type="submit" class="main-btn rounded-2 px-lg-3">
+                    Check Availibility
+                </button>
+            </div>
+        </form>
+    </div>
+</section>
+
+</body>
+</html>
