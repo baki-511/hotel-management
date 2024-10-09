@@ -20,6 +20,11 @@ public class HomeController {
         return "/pages/service";
     }
     
+    @GetMapping("/gallery")
+    public String gallery() {
+        return "/pages/gallery";
+    }
+    
     @GetMapping("/contact-us")
     public String contactUs() {
         return "/pages/contact_us";

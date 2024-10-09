@@ -417,19 +417,13 @@ p {
 }
 
 /* 7 Gallery Section  */
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-
-}
 .gallery_container{
     width: 100%;
     /* min-height: 100vh; */
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 10px 5%;
+    padding: 10px 20px;
 }
 
 .gallery{
@@ -505,6 +499,7 @@ p {
     margin-top: 10px !important;
     font-weight: 500;
     border-radius: 50px;
+    margin-bottom: 20px
 }
 
 .main_form .send_btn:hover {

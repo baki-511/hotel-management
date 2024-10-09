@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Gallery</title>
+</head>
+<body>
+<!-- Gallery Section  -->
+<section id="gallery_section" class="gallery_wrapper pb-0" th:fragment="gallery">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 section-title text-center">
+                <h6>Here Some Memories</h6>
+                <h3>Our Gallery</h3>
+            </div>
+        </div>
+
+        <div class="gallery_container">
+            <div class="gallery">
+                <a th:href=@{/images/myGallery/gallery1.jpg} data-lightbox="models" data-title="Caption 1">
+                    <img th:src=@{/images/myGallery/gallery1.jpg} alt="" />
+                </a>
+                <a th:href=@{/images/myGallery/gallery2.jpg} data-lightbox="models" data-title="Caption 2">
+                    <img th:src=@{/images/myGallery/gallery2.jpg} alt="" />
+                </a>
+                <a th:href=@{/images/myGallery/gallery3.jpg} data-lightbox="models" data-title="Caption 3">
+                    <img th:src=@{/images/myGallery/gallery3.jpg} alt="" />
+                </a>
+                <a th:href=@{/images/myGallery/gallery4.jpg} data-lightbox="models" data-title="Caption 4">
+                    <img th:src=@{/images/myGallery/gallery4.jpg} alt="" />
+                </a>
+                <a th:href=@{/images/myGallery/gallery5.jpg} data-lightbox="models" data-title="Caption 5">
+                    <img th:src=@{/images/myGallery/gallery5.jpg} alt="" />
+                </a>
+                <!-- <a th:href="/images/myGallery/gallery6.jpg" data-lightbox="models" data-title="Caption 6">
+                  <img th:src="/images/myGallery/gallery6.jpg" alt="" />
+                </a> -->
+                <!-- <a th:href="/images/myGallery/gallery7.jpg" data-lightbox="models" data-title="Caption 7">
+                  <img th:src="/images/myGallery/gallery7.jpg" alt="" />
+                </a> -->
+                <a th:href=@{/images/myGallery/gallery8.jpg} data-lightbox="models" data-title="Caption 8">
+                    <img th:src=@{/images/myGallery/gallery8.jpg} alt="" />
+                </a>
+            </div>
+        </div>
+</section>
+</body>
+</html>

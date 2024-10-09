@@ -13,18 +13,8 @@
 <header th:replace="~{components/navbar :: navbar}"></header>
 
 <!-- Contact Us Section -->
-<div class="back_re">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="title">
-                    <h2>Gallery</h2>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div th:replace="~{components/services :: services}"></div>
+<div th:replace="~{components/titleFragment :: section_title('Gallery')}"></div>
+<div th:replace="~{components/gallery :: gallery}"></div>
 
 <!--    Footer Section -->
 <section th:replace="~{components/footer :: footer}"></section>

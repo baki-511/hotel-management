@@ -13,19 +13,19 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-public class User {
+public class Room {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long userId;
-    private String firstName;
-    private String lastName;
-    private String email;
-    private String mobileNumber;
-    private String password;
+    private Long roomId;
+    private String roomNumber;
+    private String type;
+    private Integer capacity;
+    private Integer pricePerNight;
+    private boolean isAvailable;
     
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "room")
     private List<Booking> bookings;
     
-    @OneToMany(mappedBy = "user")
-    private List<Review> reviews;
+    @OneToMany(mappedBy = "room")
+    public List<Review> reviews;
 }

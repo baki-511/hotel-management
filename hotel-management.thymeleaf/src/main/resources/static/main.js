@@ -1,7 +1,7 @@
 //Header Scroll
 let nav = document.querySelector(".navbar");
 
-console.log("Hello Hotel World!!!")
+//console.log("Hello Hotel World!!!")
 
 window.onscroll = function () {
   if (document.documentElement.scrollTop > 50) {
@@ -35,27 +35,27 @@ var swiper = new Swiper(".mySwiper", {
 });
 
 // Counter Design
-document.addEventListener("DOMContentLoaded", () => {
-  function counter(id, start, end, duration) {
-    let obj = document.getElementById(id),
-      current = start,
-      range = end - start,
-      increment = end > start ? 1 : -1,
-      step = Math.abs(Math.floor(duration / range)),
-      timer = setInterval(() => {
-        current += increment;
-        obj.textContent = current;
-        if (current == end) {
-          clearInterval(timer);
-        }
-      }, step);
-  }
-
-  counter("count1", 0, 1489, 3000);
-  counter("count2", 100, 2563, 2000);
-  counter("count3", 0, 1904, 2500);
-  counter("count4", 50, 1200, 3000);
-});
+//document.addEventListener("DOMContentLoaded", () => {
+//  function counter(id, start, end, duration) {
+//    let obj = document.getElementById(id),
+//      current = start,
+//      range = end - start,
+//      increment = end > start ? 1 : -1,
+//      step = Math.abs(Math.floor(duration / range)),
+//      timer = setInterval(() => {
+//        current += increment;
+//        obj.textContent = current;
+//        if (current == end) {
+//          clearInterval(timer);
+//        }
+//      }, step);
+//  }
+//
+//  counter("count1", 0, 1489, 3000);
+//  counter("count2", 100, 2563, 2000);
+//  counter("count3", 0, 1904, 2500);
+//  counter("count4", 50, 1200, 3000);
+//});
 
 //Slider JS
 var swiper = new Swiper(".our-partner", {
