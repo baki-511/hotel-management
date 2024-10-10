@@ -13,19 +13,16 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-public class Room {
+public class RoomType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long roomId;
-    private String roomNumber;
-    private boolean isAvailable;
+    private Integer roomTypeId;
+    private String type;
+    private Integer capacity;
+    private Integer pricePerNight;
+    private String description;
+    private String image;
     
-    @ManyToOne
-    private RoomType roomType;
-    
-    @OneToMany(mappedBy = "room")
-    private List<Booking> bookings;
-    
-    @OneToMany(mappedBy = "room")
-    public List<Review> reviews;
+    @OneToMany(mappedBy = "roomType", cascade = CascadeType.ALL)
+    private List<Room> roomList;
 }

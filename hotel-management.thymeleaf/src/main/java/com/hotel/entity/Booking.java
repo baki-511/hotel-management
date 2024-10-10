@@ -21,7 +21,6 @@ public class Booking {
     private Date checkOutDate;
     private Double totalPrice;
     private String status;
-
     
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)

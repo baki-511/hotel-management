@@ -35,4 +35,10 @@ public class GlobalException {
         String message = e.getMessage();
         return new ApiResponse(message, false);
     }
+    
+    @ExceptionHandler
+    public ApiResponse roomTypeNotAvailable(RoomTypeNotAvailable e) {
+        String message = e.getMessage();
+        return new ApiResponse(message, false);
+    }
 }
