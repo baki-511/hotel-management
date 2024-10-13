@@ -1,3 +1,11 @@
+@media screen and (min-width: 1250px) {
+    /* Room Blog Section  */
+    #my-rooms .row .card {
+        width: 30%;
+        margin: auto;
+    }
+}
+
 @media only screen and (max-width:1200px){
     /* header  */
     .header_wrapper .navbar-expand-lg .navbar-nav{
@@ -32,6 +40,13 @@
     .booking-area{
         padding: 3.125rem 1.875rem;
     }
+
+    /* Room Blog Section  */
+    #my-rooms .row .card {
+        width: 46%;
+        margin-right: 4%;
+    }
+
 
     /* Rooms  */
     .room-items .room-content{
@@ -104,6 +119,13 @@
         padding-top: 2.375rem;
     }
 
+
+    /* Room Blog Section  */
+    #my-rooms .row .card {
+        width: 90%;
+        margin: auto;
+
+    }
 
     /* Rooms  */
     .room-items .room-content{

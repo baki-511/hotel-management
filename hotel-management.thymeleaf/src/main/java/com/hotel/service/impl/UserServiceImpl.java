@@ -59,13 +59,18 @@ public class UserServiceImpl implements UserService {
         booking.setCheckInDate(bookingRequest.getCheckInDate());
         booking.setCheckOutDate(bookingRequest.getCheckOutDate());
         booking.setTotalPrice(bookingRequest.getTotalPrice());
+        
         //Set the room Details
         RoomType roomType = roomTypeRepository.findById(bookingRequest.getRoomId())
                 .orElseThrow(() -> new RoomTypeNotAvailable(bookingRequest.getRoomId()));
         Room room = roomRepository.findByRoomType(roomType)
-                .stream().findAny()
+                .stream()
+                .filter(Room::isAvailable)
+                .findAny()
                 .orElseThrow(() -> new RoomNotFoundException("Sorry! Room Is NOT Available"));
+        room.setAvailable(false);
         booking.setRoom(room);
+        
         //Set Payment Details
         Payment payment = new Payment();
         payment.setPaymentMethod(bookingRequest.getPaymentMethod());
@@ -79,6 +84,8 @@ public class UserServiceImpl implements UserService {
         //Save Details In Databases
         return userRepository.save(user);
     }
+    
+    
     
     
 }

@@ -25,6 +25,11 @@ public class HomeController {
         return "/pages/gallery";
     }
     
+    @GetMapping("/rooms")
+    public String rooms() {
+        return "/pages/rooms";
+    }
+    
     @GetMapping("/contact-us")
     public String contactUs() {
         return "/pages/contact_us";
