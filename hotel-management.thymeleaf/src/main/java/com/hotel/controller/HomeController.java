@@ -35,6 +35,11 @@ public class HomeController {
         return "/pages/search-result";
     }
     
+    @GetMapping("/checkout")
+    public String checkout() {
+        return "/pages/checkout";
+    }
+    
     
     @GetMapping("/contact-us")
     public String contactUs() {

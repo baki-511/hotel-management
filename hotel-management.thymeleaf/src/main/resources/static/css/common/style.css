@@ -648,3 +648,17 @@ p {
 }
 
 
+/* Checkout  */
+#checkout .room-details span{
+    font-size: 1.05rem;
+    font-weight: 500;
+    margin-right: 5px;
+}
+
+#checkout .room-details .title{
+    font-size: 20px;
+    font-weight: 500;
+}
+
+
+

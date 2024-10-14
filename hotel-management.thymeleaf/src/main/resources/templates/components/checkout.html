@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Rooms</title>
+</head>
+<body>
+<section id="checkout" th:fragment="checkout">
+    <div class="container p-3">
+        <div class="card">
+            <div class="row">
+                <div class="col-md-6 p-4">
+                    <h3>Billing Details</h3>
+                    <form>
+                        <div class="mb-3 d-flex justify-content-between gap-3">
+                            <input
+                                    type="text"
+                                    class="form-control py-2"
+                                    placeholder="First Name"
+                                    required
+                            />
+                            <input
+                                    type="text"
+                                    class="form-control py-2"
+                                    placeholder="Last Name"
+                                    required
+                            />
+                        </div>
+                        <div class="mb-3">
+                            <input
+                                    type="email"
+                                    class="form-control py-2"
+                                    id="exampleInputEmail1"
+                                    placeholder="Email"
+                                    required
+                            />
+                        </div>
+                        <div class="mb-3">
+                            <input
+                                    type="text"
+                                    class="form-control py-2"
+                                    placeholder="Mobile No"
+                            />
+                        </div>
+                        <div class="mb-3 d-flex justify-content-between gap-3">
+                            <input
+                                    type="text"
+                                    class="form-control py-2"
+                                    placeholder="State"
+                            />
+                            <input
+                                    type="text"
+                                    class="form-control py-2"
+                                    placeholder="City"
+                            />
+                            <input
+                                    type="text"
+                                    class="form-control py-2"
+                                    placeholder="Pincode"
+                            />
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+                <div class="col-md-6 col-12 col-sm-12 p-3 bg-light">
+                    <h3>Your Booking</h3>
+                    <div class="room-details d-flex justify-content-between">
+                        <div class="left-part col-12 col-sm-12">
+                            <div class="d-flex justify-content-between border-4 border-bottom mb-3 pb-2">
+                                <h5 class="col-md-8">Product</h5>
+                                <h5 class="col-md-4">Subtotal</h5>
+                            </div>
+                            <div class="d-flex justify-content-between border-2 border-bottom mb-3">
+                                <div class="col-md-8">
+                                    <p style="font-size: 20px; font-weight: 500;">Family Room</p>
+                                    <p><span>Date:</span>2024-10-14 - 2024-10-15</p>
+                                    <p><span>Details:</span> Adults:3, Children:3</p>
+                                </div>
+                                <div class="col-md-4" style="margin-top: auto; margin-bottom: auto;">
+                                    <span style="font-size: 18px; font-weight: 500;">₹ 5000</span>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between border-2 border-bottom mb-3">
+                                <div class="col-md-8">
+                                    <p class="title">GST</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <p style="font-size: 18px; font-weight: 500;">₹ 200</p>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <div class="col-md-8">
+                                    <p class="title">Total</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <p style="font-size: 18px; font-weight: 500;">₹ 5200</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>
