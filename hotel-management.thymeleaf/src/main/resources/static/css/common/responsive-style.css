@@ -92,6 +92,17 @@
 
     }
 
+    /* Search Result  */
+    #search-result .left-section{
+        /* width: 90%; */
+        margin-left: auto;
+    }
+
+    #search-result .right-section{
+        margin-top: 30px;
+        margin-left: auto;
+    }
+
 }
 
 @media only screen and (max-width:991px) {
@@ -149,6 +160,16 @@
         margin-left: unset !important;
     }
 
+ /* Search Result  */
+    #search-result .left-section .room-card{
+        display: flex;
+        flex-direction: column;
+    }
+
+    #search-result .left-section .room-card img{
+        width: 100%;
+        /* height: 520px; */
+    }
 
 }
 

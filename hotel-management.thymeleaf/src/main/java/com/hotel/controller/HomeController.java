@@ -30,6 +30,12 @@ public class HomeController {
         return "/pages/rooms";
     }
     
+    @GetMapping("/search-result")
+    public String searchResult() {
+        return "/pages/search-result";
+    }
+    
+    
     @GetMapping("/contact-us")
     public String contactUs() {
         return "/pages/contact_us";

@@ -624,3 +624,27 @@ p {
 .footer_wrapper .copyright-section a{
     color: var(--secondary-color);
 }
+
+/* Contact Us Page CSS  */
+#search-result .container .card img{
+    width: 450px;
+    height: 290px;
+    object-fit: cover;
+}
+
+#search-result .right-section{
+    margin-top: 10%;
+}
+
+#search-result .card-image .price span{
+    font-size: 30px;
+}
+
+
+#search-result .room-card .room-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+
