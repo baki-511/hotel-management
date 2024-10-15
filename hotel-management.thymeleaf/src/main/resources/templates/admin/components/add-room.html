@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0,
+           minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Main Page</title>
+</head>
+<body>
+<div  th:fragment="main">
+
+    <div class="add-room">
+        <div class="heading">
+            <p>Add Room</p>
+        </div>
+
+        <div class="room-form">
+            <form th:action="@{/admin/add-room}" method="post" enctype="multipart/form-data">
+                <div class="inp-field">
+                    <label>Enter Room Type</label>
+                    <input type="text" name="roomType" placeholder="Room Type" />
+                </div>
+                <div class="inp-field">
+                    <label>Enter Room Capacity</label>
+                    <input type="number" name="capacity" placeholder="Room Capacity" />
+                </div>
+                <div class="inp-field">
+                    <label>Price Per Night</label>
+                    <input type="number" name="pricePerNight" placeholder="Price" />
+                </div>
+                <div class="inp-field">
+                    <label>Enter Room Description</label>
+                    <textarea name="description" rows="5" ></textarea>
+                </div>
+
+                <div class="inp-field">
+                    <label>Upload Room Pic</label>
+                    <input
+                            type="file"
+                            id="file-pic"
+                            name="imageFile" accept="image/*" required
+
+                    />
+                </div>
+                <button type="submit" class="room-btn">Add Room</button>
+            </form>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

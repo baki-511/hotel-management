@@ -21,6 +21,8 @@ public class RoomType {
     private Integer capacity;
     private Integer pricePerNight;
     private String description;
+    @Lob
+    @Column(columnDefinition = "MEDIUMBLOB")
     private String image;
     
     @OneToMany(mappedBy = "roomType", cascade = CascadeType.ALL)
