@@ -16,6 +16,7 @@ let navigation = document.querySelector(".navigation");
 let main = document.querySelector(".main");
 
 toggle.onclick = function () {
+    console.log("Clicked....")
   navigation.classList.toggle("active");
   main.classList.toggle("active");
 };
