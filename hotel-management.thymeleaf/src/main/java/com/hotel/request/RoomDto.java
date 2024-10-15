@@ -1,19 +1,14 @@
 package com.hotel.request;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.hotel.entity.RoomType;
+import lombok.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
+@ToString
 public class RoomDto {
     private String roomNumber;
-    private String roomType;
-    private Integer capacity;
-    private Integer pricePerNight;
-    private String description;
-    private boolean isAvailable;
+    private Integer roomId;
 }

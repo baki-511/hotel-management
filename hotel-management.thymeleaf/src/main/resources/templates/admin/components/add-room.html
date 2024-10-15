@@ -10,46 +10,26 @@
 </head>
 <body>
 <div  th:fragment="main">
-
-    <div class="add-room">
-        <div class="heading">
-            <p>Add Room</p>
-        </div>
-
-        <div class="room-form">
-            <form th:action="@{/admin/add-room}" method="post" enctype="multipart/form-data">
-                <div class="inp-field">
-                    <label>Enter Room Type</label>
-                    <input type="text" name="roomType" placeholder="Room Type" />
+    <div class="container col-lg-4 offset-lg-4 mt-5">
+        <div>
+            <h5 class="card-header bg-success text-light text-center py-3 fs-3">
+                Add Room
+            </h5>
+            <form class="card p-3" th:action="@{/admin/add-room}" method="post">
+                <div class="mb-3">
+                    <label  class="form-label">Room Number</label>
+                    <input type="text" name="roomNumber" class="form-control" >
                 </div>
-                <div class="inp-field">
-                    <label>Enter Room Capacity</label>
-                    <input type="number" name="capacity" placeholder="Room Capacity" />
+                <div class="mb-3">
+                    <select name="roomId"  class="form-select" aria-label="Default select example">
+                        <option th:each="type : ${roomTypes}"
+                                th:value="${type.roomTypeId}"
+                                th:text="${type.type}"></option>
+                    </select>
                 </div>
-                <div class="inp-field">
-                    <label>Price Per Night</label>
-                    <input type="number" name="pricePerNight" placeholder="Price" />
-                </div>
-                <div class="inp-field">
-                    <label>Enter Room Description</label>
-                    <textarea name="description" rows="5" ></textarea>
-                </div>
-
-                <div class="inp-field">
-                    <label>Upload Room Pic</label>
-                    <input
-                            type="file"
-                            id="file-pic"
-                            name="imageFile"
-                            class="form-control"
-                            accept="image/*" required
-                    />
-                </div>
-                <button type="submit" class="room-btn">Add Room</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
     </div>
-
-</div>
 </body>
 </html>

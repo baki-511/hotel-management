@@ -21,6 +21,7 @@ public class Room {
     private boolean isAvailable;
     
     @ManyToOne
+    @JoinColumn(name = "room_type", nullable = true)
     private RoomType roomType;
     
     @OneToMany(mappedBy = "room")

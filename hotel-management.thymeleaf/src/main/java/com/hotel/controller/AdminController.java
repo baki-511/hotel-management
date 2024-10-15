@@ -1,6 +1,8 @@
 package com.hotel.controller;
 
+import com.hotel.entity.Room;
 import com.hotel.entity.RoomType;
+import com.hotel.request.RoomDto;
 import com.hotel.request.RoomTypeDto;
 import com.hotel.service.RoomService;
 import com.hotel.service.UserService;
@@ -26,16 +28,30 @@ public class AdminController {
         return "admin/pages/admin-idx";
     }
     
-    @GetMapping("/create-room")
+    @GetMapping("/create-room-type")
     public String roomBook(Model model) {
         model.addAttribute("room", new RoomTypeDto());
+        return "admin/pages/add-room-type";
+    }
+    
+    @PostMapping("/add-room-type")
+    public String addRoomType(@ModelAttribute RoomTypeDto roomTypeDto,
+                          @RequestParam("imageFile") MultipartFile imageFile, Model model) throws IOException {
+        roomService.addRoomType(roomTypeDto, imageFile);
+        return "redirect:/admin/create-room-type";
+    }
+    
+    @GetMapping("/create-room")
+    public String createRoom(Model model) {
+        model.addAttribute("roomTypes",roomService.getAllRoomTypes());
+        model.addAttribute("room", new RoomDto());
         return "admin/pages/add-room";
     }
     
     @PostMapping("/add-room")
-    public String addRoom(@ModelAttribute RoomTypeDto roomTypeDto,
-                          @RequestParam("imageFile") MultipartFile imageFile, Model model) throws IOException {
-        roomService.addRoom(roomTypeDto, imageFile);
+    public String addRoom(@ModelAttribute RoomDto roomDto, Model model) throws IOException {
+        roomService.addRoom(roomDto);
         return "redirect:/admin/create-room";
     }
+    
 }
