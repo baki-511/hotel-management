@@ -1,5 +1,6 @@
 package com.hotel.service.impl;
 
+import com.hotel.entity.Booking;
 import com.hotel.entity.Room;
 import com.hotel.entity.RoomType;
 import com.hotel.exception.RoomTypeNotAvailable;
@@ -8,6 +9,7 @@ import com.hotel.repository.RoomTypeRepository;
 import com.hotel.request.RoomDto;
 import com.hotel.request.RoomReservation;
 import com.hotel.request.RoomTypeDto;
+import com.hotel.service.BookingService;
 import com.hotel.service.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,6 +28,9 @@ public class RoomServiceImpl implements RoomService {
     
     @Autowired
     private RoomRepository roomRepository;
+    
+    @Autowired
+    private BookingService bookingService;
     
     @Override
     public RoomType addRoomType(RoomTypeDto roomTypeDto, MultipartFile file) throws IOException {
@@ -50,6 +55,11 @@ public class RoomServiceImpl implements RoomService {
     }
     
     @Override
+    public List<Room> getAllRooms() {
+        return roomRepository.findAll();
+    }
+    
+    @Override
     public List<RoomType> getAllRoomTypes() {
         return roomTypeRepository.findAll();
     }
@@ -62,15 +72,22 @@ public class RoomServiceImpl implements RoomService {
     
     @Override
     public List<RoomType> getAllAvailableRoomType(RoomReservation roomReservation) {
-        List<Room> availableRooms = roomRepository.findByIsAvailableTrue().stream()
-                .filter(f -> f.getRoomType().getCapacity() >= roomReservation.getAdultCount())
-                .toList();
         LocalDate checkIn = roomReservation.getCheckInTime();
         LocalDate checkOut = roomReservation.getCheckoutTime();
+        //Get All Booking Rooms
+        List<Room> bookedRooms = bookingService.occupiedBookings(checkIn, checkOut)
+                .stream().map(Booking::getRoom)
+                .toList();
         
+        List<Room> allAvailableRooms = getAllRooms().stream()
+                .filter(f -> f.getRoomType().getCapacity() >= roomReservation.getAdultCount())
+                .filter(room -> !bookedRooms.contains(room))
+                .toList();
         
-        
-        return null;
+        return allAvailableRooms.stream()
+                .map(Room::getRoomType)
+                .distinct()
+                .toList();
     }
     
     
