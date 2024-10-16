@@ -86,27 +86,5 @@ public class UserServiceImpl implements UserService {
         //Save Details In Databases
         return userRepository.save(user);
     }
-    
-    @Override
-    public List<RoomType> getRoomByType() {
-        return roomRepository.findAll().stream()
-                .filter(Room::isAvailable)
-                .map(Room::getRoomType)
-                .distinct().collect(Collectors.toList());
-    }
-    
-    @Override
-    public Boolean isRoomAvailable(RoomType roomType) {
-        List<Room> allRoomByType = findAllRoomByType(roomType);
-        System.out.println((long) allRoomByType.size());
-        return (long) allRoomByType.size() != 0;
-    }
-    
-    private List<Room> findAllRoomByType(RoomType roomType) {
-        return roomRepository
-                .findAll().stream()
-                .filter(Room::isAvailable)
-                .filter(f -> f.getRoomType().equals(roomType))
-                .collect(Collectors.toList());
-    }
+   
 }

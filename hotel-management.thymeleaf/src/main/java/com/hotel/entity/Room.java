@@ -27,4 +27,14 @@ public class Room {
     
     @OneToMany(mappedBy = "room")
     public List<Review> reviews;
+    
+    @Override
+    public String toString() {
+        return "Room{" +
+                "roomId=" + roomId +
+                ", roomNumber='" + roomNumber + '\'' +
+                ", isAvailable=" + isAvailable +
+                ", roomType=" + roomType +
+                '}';
+    }
 }

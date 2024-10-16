@@ -34,14 +34,6 @@ public class Application implements CommandLineRunner {
 	
 	@Override
 	public void run(String... args) throws Exception {
-//		RoomType roomType = roomService.getRoomTypeById(3).get();
-		List<RoomType> all = roomTypeRepository.findAll();
-		all.forEach(a->{
-			roomRepository.findByRoomType(a)
-					.forEach(r->{
-						r.setAvailable(true);
-//						roomRepository.save(r);
-					});
-		});
+	
 	}
 }

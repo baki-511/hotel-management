@@ -14,8 +14,5 @@ public interface UserService {
     public User getUserById(Long userId);
     
     public User bookRoom(BookingRequest bookingRequest);
-    
-    public List<RoomType> getRoomByType();
-    
-    public Boolean isRoomAvailable(RoomType roomType);
+   
 }

@@ -3,6 +3,7 @@ package com.hotel.service;
 import com.hotel.entity.Room;
 import com.hotel.entity.RoomType;
 import com.hotel.request.RoomDto;
+import com.hotel.request.RoomReservation;
 import com.hotel.request.RoomTypeDto;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -16,5 +17,11 @@ public interface RoomService {
     public List<RoomType> getAllRoomTypes();
     
     public RoomType getRoomTypeById(Integer id);
+    
+    public List<RoomType> getAllAvailableRoomType(RoomReservation roomReservation);
+    
+    public List<RoomType> getRoomByType();
+    
+    public Boolean isRoomAvailable(RoomType roomType);
     
 }

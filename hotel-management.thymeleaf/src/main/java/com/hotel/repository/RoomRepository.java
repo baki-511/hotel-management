@@ -8,4 +8,6 @@ import java.util.List;
 
 public interface RoomRepository extends JpaRepository<Room,Long> {
     public List<Room> findByRoomType(RoomType roomType);
+    
+    public List<Room> findByIsAvailableTrue();
 }

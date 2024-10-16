@@ -3,6 +3,7 @@ package com.hotel.rest;
 import com.hotel.entity.RoomType;
 import com.hotel.exception.RoomTypeNotAvailable;
 import com.hotel.repository.RoomTypeRepository;
+import com.hotel.service.RoomService;
 import com.hotel.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,18 +17,21 @@ public class HomeRestController {
     private UserService userService;
     
     @Autowired
+    private RoomService roomService;
+    
+    @Autowired
     private RoomTypeRepository roomTypeRepository;
     
     @GetMapping("/type/all")
     public ResponseEntity<?> getAllRooms() {
-        return new ResponseEntity<>(userService.getRoomByType(), HttpStatus.OK);
+        return new ResponseEntity<>(roomService.getRoomByType(), HttpStatus.OK);
     }
     
     @GetMapping("/check")
     public ResponseEntity<?> isRoomTypeAvailable() {
         RoomType roomType = roomTypeRepository.findById(1)
                 .orElseThrow(() -> new RoomTypeNotAvailable("NOT Available"));
-        return new ResponseEntity<>(userService.isRoomAvailable(roomType), HttpStatus.OK);
+        return new ResponseEntity<>(roomService.isRoomAvailable(roomType), HttpStatus.OK);
     }
     
 }

@@ -6,6 +6,7 @@ import com.hotel.exception.RoomTypeNotAvailable;
 import com.hotel.repository.RoomRepository;
 import com.hotel.repository.RoomTypeRepository;
 import com.hotel.request.RoomDto;
+import com.hotel.request.RoomReservation;
 import com.hotel.request.RoomTypeDto;
 import com.hotel.service.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +14,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.Base64;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class RoomServiceImpl implements RoomService {
@@ -56,4 +59,43 @@ public class RoomServiceImpl implements RoomService {
         return roomTypeRepository.findById(id)
                 .orElseThrow(() -> new RoomTypeNotAvailable("This Room Type Is NOT Available"));
     }
+    
+    @Override
+    public List<RoomType> getAllAvailableRoomType(RoomReservation roomReservation) {
+        List<Room> availableRooms = roomRepository.findByIsAvailableTrue().stream()
+                .filter(f -> f.getRoomType().getCapacity() >= roomReservation.getAdultCount())
+                .toList();
+        LocalDate checkIn = roomReservation.getCheckInTime();
+        LocalDate checkOut = roomReservation.getCheckoutTime();
+        
+        
+        
+        return null;
+    }
+    
+    
+    @Override
+    public List<RoomType> getRoomByType() {
+        return roomRepository.findAll().stream()
+                .filter(Room::isAvailable)
+                .map(Room::getRoomType)
+                .distinct().collect(Collectors.toList());
+    }
+    
+    @Override
+    public Boolean isRoomAvailable(RoomType roomType) {
+        List<Room> allRoomByType = findAllRoomByType(roomType);
+        System.out.println((long) allRoomByType.size());
+        return (long) allRoomByType.size() != 0;
+    }
+    
+    private List<Room> findAllRoomByType(RoomType roomType) {
+        return roomRepository
+                .findAll().stream()
+                .filter(Room::isAvailable)
+                .filter(f -> f.getRoomType().equals(roomType))
+                .collect(Collectors.toList());
+    }
+    
+//    private List<Room> findAllRoom
 }
