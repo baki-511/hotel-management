@@ -15,6 +15,8 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -46,14 +48,15 @@ public class UserServiceImpl implements UserService {
         user.setMobileNumber(bookingRequest.getPhone());
         user.setFirstName(bookingRequest.getFirstName());
         user.setLastName(bookingRequest.getLastName());
-  
+        
         List<Booking> bookings;
         if (optionalUser.isPresent()) {
             User mainUser = optionalUser.get();
             bookings = mainUser.getBookings();
-        } else{
+        } else {
             bookings = new ArrayList<>();
         }
+        
         //Setting Booking Details
         Booking booking = new Booking();
         booking.setCheckInDate(bookingRequest.getCheckInDate());
@@ -63,8 +66,7 @@ public class UserServiceImpl implements UserService {
         //Set the room Details
         RoomType roomType = roomTypeRepository.findById(bookingRequest.getRoomId())
                 .orElseThrow(() -> new RoomTypeNotAvailable(bookingRequest.getRoomId()));
-        Room room = roomRepository.findByRoomType(roomType)
-                .stream()
+        Room room = roomRepository.findByRoomType(roomType).stream()
                 .filter(Room::isAvailable)
                 .findAny()
                 .orElseThrow(() -> new RoomNotFoundException("Sorry! Room Is NOT Available"));
@@ -85,7 +87,26 @@ public class UserServiceImpl implements UserService {
         return userRepository.save(user);
     }
     
+    @Override
+    public List<RoomType> getRoomByType() {
+        return roomRepository.findAll().stream()
+                .filter(Room::isAvailable)
+                .map(Room::getRoomType)
+                .distinct().collect(Collectors.toList());
+    }
     
+    @Override
+    public Boolean isRoomAvailable(RoomType roomType) {
+        List<Room> allRoomByType = findAllRoomByType(roomType);
+        System.out.println((long) allRoomByType.size());
+        return (long) allRoomByType.size() != 0;
+    }
     
-    
+    private List<Room> findAllRoomByType(RoomType roomType) {
+        return roomRepository
+                .findAll().stream()
+                .filter(Room::isAvailable)
+                .filter(f -> f.getRoomType().equals(roomType))
+                .collect(Collectors.toList());
+    }
 }

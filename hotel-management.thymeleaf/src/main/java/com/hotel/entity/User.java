@@ -21,7 +21,11 @@ public class User {
     private String lastName;
     private String email;
     private String mobileNumber;
+    
     private String password;
+    
+    @OneToMany(mappedBy = "user")
+    private List<Address> addressList;
     
     @OneToMany(mappedBy = "user")
     private List<Booking> bookings;

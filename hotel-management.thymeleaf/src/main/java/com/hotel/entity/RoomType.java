@@ -1,5 +1,7 @@
 package com.hotel.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,8 +25,10 @@ public class RoomType {
     private String description;
     @Lob
     @Column(columnDefinition = "MEDIUMBLOB")
+    @JsonIgnore
     private String image;
     
     @OneToMany(mappedBy = "roomType", cascade = CascadeType.ALL)
+    @JsonBackReference
     private List<Room> roomList;
 }

@@ -15,5 +15,6 @@ public interface RoomService {
     public Room addRoom(RoomDto roomDto);
     public List<RoomType> getAllRoomTypes();
     
+    public RoomType getRoomTypeById(Integer id);
     
 }

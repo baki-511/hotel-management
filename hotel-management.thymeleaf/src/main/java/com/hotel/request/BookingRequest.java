@@ -16,6 +16,9 @@ public class BookingRequest {
         private String lastName;
         private String email;
         private String phone;
+        private String state;
+        private String city;
+        private String pincode;
         private Integer roomId;
         private Date checkInDate;
         private Date checkOutDate;

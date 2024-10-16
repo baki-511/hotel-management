@@ -50,4 +50,10 @@ public class RoomServiceImpl implements RoomService {
     public List<RoomType> getAllRoomTypes() {
         return roomTypeRepository.findAll();
     }
+    
+    @Override
+    public RoomType getRoomTypeById(Integer id) {
+        return roomTypeRepository.findById(id)
+                .orElseThrow(() -> new RoomTypeNotAvailable("This Room Type Is NOT Available"));
+    }
 }
