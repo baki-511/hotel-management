@@ -1,8 +1,7 @@
 package com.hotel.controller;
 
-import com.hotel.entity.Room;
-import com.hotel.entity.RoomType;
 import com.hotel.request.RoomDto;
+import com.hotel.request.RoomReservation;
 import com.hotel.request.RoomTypeDto;
 import com.hotel.service.RoomService;
 import com.hotel.service.UserService;
@@ -53,5 +52,6 @@ public class AdminController {
         roomService.addRoom(roomDto);
         return "redirect:/admin/create-room";
     }
+    
     
 }

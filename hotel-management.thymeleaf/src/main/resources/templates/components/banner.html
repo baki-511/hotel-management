@@ -46,43 +46,8 @@
         <!--  pagination -->
         <div class="swiper-pagination"></div>
     </div>
-    <div class="container booking-area">
-        <form action="" class="row">
-            <div class="col-lg mb-3 mb-lg-0">
-                <input type="date" class="form-control" placeholder="date" />
-            </div>
-            <div class="col-lg mb-3 mb-lg-0">
-                <input type="date" class="form-control" placeholder="date" />
-            </div>
-            <div class="col-lg mb-3 mb-lg-0">
-                <select class="form-select">
-                    <option value="" selected>Adults</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                </select>
-            </div>
-            <div class="col-lg mb-3 mb-lg-0">
-                <select class="form-select">
-                    <option value="" selected>Childern</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                </select>
-            </div>
-            <div class="col-lg mb-3 mb-lg-0">
-                <button type="submit" class="main-btn rounded-2 px-lg-3">
-                    Check Availibility
-                </button>
-            </div>
-        </form>
-    </div>
+
+    <div th:replace="~{components/booking-area :: booking-area}"></div>
 </section>
 
 </body>

@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -20,8 +20,8 @@ public class BookingRequest {
         private String city;
         private String pincode;
         private Integer roomId;
-        private Date checkInDate;
-        private Date checkOutDate;
+        private LocalDate checkInDate;
+        private LocalDate checkOutDate;
         private String paymentMethod;
         private Double totalPrice;
 }

@@ -42,13 +42,28 @@ public class UserServiceImpl implements UserService {
     
     @Override
     public User bookRoom(BookingRequest bookingRequest) {
-        Optional<User> optionalUser = userRepository.findByEmail(bookingRequest.getEmail());
         User user = new User();
         user.setEmail(bookingRequest.getEmail());
-        user.setMobileNumber(bookingRequest.getPhone());
-        user.setFirstName(bookingRequest.getFirstName());
-        user.setLastName(bookingRequest.getLastName());
+        Customer customer = new Customer();
+        customer.setMobileNumber(bookingRequest.getPhone());
+        customer.setFirstName(bookingRequest.getFirstName());
+        customer.setLastName(bookingRequest.getLastName());
         
+        List<Customer> customers = user.getCustomers();
+        customers.add(customer);
+        
+        user.setCustomers(customers);
+        //Add address to list
+        List<Address> addressList = user.getAddressList();
+        Address address = new Address();
+        address.setCity(bookingRequest.getCity());
+        address.setState(bookingRequest.getState());
+        address.setPincode(bookingRequest.getPincode());
+        addressList.add(address);
+        //Save address
+        user.setAddressList(addressList);
+        
+        Optional<User> optionalUser = userRepository.findByEmail(bookingRequest.getEmail());
         List<Booking> bookings;
         if (optionalUser.isPresent()) {
             User mainUser = optionalUser.get();

@@ -73,17 +73,17 @@ public class RoomServiceImpl implements RoomService {
     @Override
     public List<RoomType> getAllAvailableRoomType(RoomReservation roomReservation) {
         LocalDate checkIn = roomReservation.getCheckInTime();
-        LocalDate checkOut = roomReservation.getCheckoutTime();
+        LocalDate checkOut = roomReservation.getCheckOutTime();
         //Get All Booking Rooms
         List<Room> bookedRooms = bookingService.occupiedBookings(checkIn, checkOut)
                 .stream().map(Booking::getRoom)
                 .toList();
-        
+        //Get All the rooms not present in Booking List
         List<Room> allAvailableRooms = getAllRooms().stream()
                 .filter(f -> f.getRoomType().getCapacity() >= roomReservation.getAdultCount())
                 .filter(room -> !bookedRooms.contains(room))
                 .toList();
-        
+        //Map the RoomType and Return
         return allAvailableRooms.stream()
                 .map(Room::getRoomType)
                 .distinct()
@@ -113,6 +113,5 @@ public class RoomServiceImpl implements RoomService {
                 .filter(f -> f.getRoomType().equals(roomType))
                 .collect(Collectors.toList());
     }
-    
-//    private List<Room> findAllRoom
+
 }

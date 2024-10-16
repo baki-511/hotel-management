@@ -17,12 +17,11 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
-    private String firstName;
-    private String lastName;
     private String email;
-    private String mobileNumber;
-    
     private String password;
+    
+    @OneToMany(mappedBy = "user")
+    public List<Customer> customers;
     
     @OneToMany(mappedBy = "user")
     private List<Address> addressList;
