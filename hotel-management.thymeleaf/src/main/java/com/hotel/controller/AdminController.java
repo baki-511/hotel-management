@@ -1,7 +1,6 @@
 package com.hotel.controller;
 
 import com.hotel.request.RoomDto;
-import com.hotel.request.RoomReservation;
 import com.hotel.request.RoomTypeDto;
 import com.hotel.service.RoomService;
 import com.hotel.service.UserService;

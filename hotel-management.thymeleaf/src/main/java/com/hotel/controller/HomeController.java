@@ -1,7 +1,9 @@
 package com.hotel.controller;
 
+import com.hotel.entity.Booking;
 import com.hotel.entity.RoomType;
-import com.hotel.repository.RoomTypeRepository;
+import com.hotel.request.BookingRequest;
+import com.hotel.request.CustomerDto;
 import com.hotel.request.RoomReservation;
 import com.hotel.service.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,11 +57,11 @@ public class HomeController {
             @Param("adultCount") Integer adultCount,
             @Param("childCount") Integer childCount,
             Model model
-            ) {
-        System.out.println(roomId+" "+checkIn+" "+checkOut+" "+adultCount+" "+childCount);
-        System.out.println("Math " +( adultCount * 10));
+    ) {
+        System.out.println(roomId + " " + checkIn + " " + checkOut + " " + adultCount + " " + childCount);
+        System.out.println("Math " + (adultCount * 10));
         RoomType roomType = roomService.getRoomTypeById(roomId);
-
+        
         RoomReservation reservation = new RoomReservation();
         reservation.setCheckInTime(checkIn);
         reservation.setCheckOutTime(checkOut);
@@ -72,6 +74,7 @@ public class HomeController {
         double total = roomType.getPricePerNight() + gst;
         String formattedTotal = String.format("%.2f", total);
         
+        model.addAttribute("typeId", roomId);
         model.addAttribute("roomType", roomType);
         model.addAttribute("reserve", reservation);
         model.addAttribute("gst", formattedGST);
@@ -84,7 +87,7 @@ public class HomeController {
 //        System.out.println(roomReservation);
         List<RoomType> all = roomService.getAllRoomTypes();
         model.addAttribute("all", all);
-        model.addAttribute("reserve",roomReservation);
+        model.addAttribute("reserve", roomReservation);
         return "/pages/search-result";
     }
     
@@ -106,4 +109,37 @@ public class HomeController {
 //        searchResult(roomReservation, model);
         return "redirect:/search-result";
     }
+    
+    @GetMapping("/success/{roomId}")
+    public String success(
+            @PathVariable Integer roomId,
+            @Param("checkIn") LocalDate checkIn,
+            @Param("checkOut") LocalDate checkOut,
+            @Param("adultCount") Integer adultCount,
+            @Param("childCount") Integer childCount,
+            @ModelAttribute CustomerDto customerDto,
+            Model model
+    ) {
+        BookingRequest request = new BookingRequest();
+        request.setFirstName(customerDto.getFirstName());
+        request.setLastName(customerDto.getLastName());
+        request.setEmail(customerDto.getEmail());
+        request.setPhone(customerDto.getMobileNumber());
+        request.setCity(customerDto.getCity());
+        request.setState(customerDto.getState());
+        request.setPincode(customerDto.getPincode());
+        request.setPaymentMethod(customerDto.getPaymentMethod());
+        
+        RoomType roomType = roomService.getRoomTypeById(roomId);
+        Integer roomPrice = roomType.getPricePerNight();
+        double gst = roomPrice * 0.18;
+        double totalPrice = 0.0;
+        totalPrice = roomPrice + gst;
+        String formattedPrice = String.format("%.2f", totalPrice);
+        totalPrice = Double.parseDouble(formattedPrice);
+        request.setTotalPrice(totalPrice);
+
+        return "/pages/final-page";
+    }
+    
 }

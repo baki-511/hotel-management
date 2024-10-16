@@ -12,18 +12,12 @@ import java.util.List;
 
 public interface RoomService {
     public RoomType addRoomType(RoomTypeDto roomTypeDto, MultipartFile file) throws IOException;
-    
     public Room addRoom(RoomDto roomDto);
-    
     public List<Room> getAllRooms();
     public List<RoomType> getAllRoomTypes();
-    
     public RoomType getRoomTypeById(Integer id);
-    
     public List<RoomType> getAllAvailableRoomType(RoomReservation roomReservation);
-    
     public List<RoomType> getRoomByType();
-    
     public Boolean isRoomAvailable(RoomType roomType);
     
 }

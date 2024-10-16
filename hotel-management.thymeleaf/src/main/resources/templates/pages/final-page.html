@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Contact Us</title>
+    <div th:replace="~{common :: common(~{::link})}"></div>
+</head>
+<body>
+<!--    Navbar section-->
+<header th:replace="~{components/navbar :: navbar}"></header>
+
+<!-- Contact Us Section -->
+<div th:replace="~{components/titleFragment :: section_title('Success')}"></div>
+<h2 class="text-center mt-5">This is Success Page</h2>
+
+<!--    Footer Section -->
+<section th:replace="~{components/footer :: footer}"></section>
+
+
+<!--JavaScript Section -->
+<div th:replace="~{common :: common_js(~{::script})}"></div>
+</body>
+</html>
