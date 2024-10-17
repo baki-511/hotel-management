@@ -107,7 +107,7 @@ public class UserServiceImpl implements UserService {
         booking.setPayment(payment);
         payment.setBooking(booking);
         
-        //set Person Details
+//        set Person Details
         BookDetail detail = new BookDetail();
         detail.setFirstName(bookingRequest.getFirstName());
         detail.setLastName(bookingRequest.getLastName());

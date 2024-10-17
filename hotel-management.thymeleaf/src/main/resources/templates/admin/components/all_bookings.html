@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0,
+           minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Main Page</title>
+</head>
+<body>
+<div  th:fragment="main">
+    <div class="container-fluid">
+        <h2 class="text-center py-2 bg-light">All Booking Details</h2>
+        <div class="card">
+            <table class="table">
+                <thead>
+                <tr class="fs-6 py-2 bg-success text-light">
+                    <th scope="col">ID</th>
+                    <th scope="col">Full Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Mobile</th>
+                    <th scope="col">Check In</th>
+                    <th scope="col">Check Out</th>
+                    <th scope="col">Guest</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Room No</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="booking : ${bookings}" class="py-3">
+                    <td th:text="${booking.bookDetailId}"></td>
+                    <td>[[${booking.firstName}]] [[${booking.lastName}]] </td>
+                    <td th:text="${booking.email}"></td>
+                    <td th:text="${booking.mobileNumber}"></td>
+                    <td th:text="${booking.booking.checkInDate}"></td>
+                    <td th:text="${booking.booking.checkOutDate}"></td>
+                    <td>[[${booking.booking.adultCount} + ${booking.booking.childCount}]]  </td>
+                    <td th:text="${booking.booking.room.roomType.type}"></td>
+                    <td th:text="${booking.booking.room.roomNumber}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
