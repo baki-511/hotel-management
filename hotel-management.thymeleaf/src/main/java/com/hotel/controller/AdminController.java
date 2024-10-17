@@ -32,6 +32,8 @@ public class AdminController {
     @Autowired
     private CustomerBookingDetailService bookingDetailService;
     
+
+    
     @GetMapping("/home")
     public String adminHome() {
         return "admin/pages/admin-idx";
