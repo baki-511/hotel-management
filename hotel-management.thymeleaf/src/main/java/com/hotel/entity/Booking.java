@@ -33,5 +33,8 @@ public class Booking {
     private Room room;
     
     @OneToOne(mappedBy = "booking", cascade = CascadeType.ALL)
+    private BookDetail bookDetail;
+    
+    @OneToOne(mappedBy = "booking", cascade = CascadeType.ALL)
     private Payment payment;
 }

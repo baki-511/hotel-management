@@ -8,6 +8,7 @@ import com.hotel.request.RoomTypeDto;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.List;
 
 public interface RoomService {
@@ -19,5 +20,7 @@ public interface RoomService {
     public List<RoomType> getAllAvailableRoomType(RoomReservation roomReservation);
     public List<RoomType> getRoomByType();
     public Boolean isRoomAvailable(RoomType roomType);
+    
+    public List<Room> getAllAvailableRooms(LocalDate start, LocalDate end);
     
 }

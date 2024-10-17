@@ -106,6 +106,17 @@ public class RoomServiceImpl implements RoomService {
         return (long) allRoomByType.size() != 0;
     }
     
+    @Override
+    public List<Room> getAllAvailableRooms(LocalDate start, LocalDate end) {
+        List<Room> bookedRooms = bookingService.occupiedBookings(start, end)
+                .stream().map(Booking::getRoom)
+                .toList();
+        //Get All the rooms not present in Booking List
+        return getAllRooms().stream()
+                .filter(room -> !bookedRooms.contains(room))
+                .toList();
+    }
+    
     private List<Room> findAllRoomByType(RoomType roomType) {
         return roomRepository
                 .findAll().stream()

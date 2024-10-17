@@ -100,11 +100,26 @@ public class UserServiceImpl implements UserService {
 //        room.setAvailable(false);
         booking.setRoom(room);
 //        Set Payment Details
-//        Payment payment = new Payment();
-//        payment.setPaymentMethod(bookingRequest.getPaymentMethod());
-//        payment.setAmount(bookingRequest.getTotalPrice());
-//        payment.setPaymentStatus("Success");
-//        booking.setPayment(payment);
+        Payment payment = new Payment();
+        payment.setPaymentMethod(bookingRequest.getPaymentMethod());
+        payment.setAmount(bookingRequest.getTotalPrice());
+        payment.setPaymentStatus("Success");
+        booking.setPayment(payment);
+        payment.setBooking(booking);
+        
+        //set Person Details
+        BookDetail detail = new BookDetail();
+        detail.setFirstName(bookingRequest.getFirstName());
+        detail.setLastName(bookingRequest.getLastName());
+        detail.setEmail(bookingRequest.getEmail());
+        detail.setMobileNumber(bookingRequest.getPhone());
+        detail.setCity(bookingRequest.getCity());
+        detail.setState(bookingRequest.getState());
+        detail.setPincode(bookingRequest.getPincode());
+        booking.setBookDetail(detail);
+        
+        detail.setBooking(booking);
+        
 //         Add Booking
         bookings.add(booking);
         user.setBookings(bookings);

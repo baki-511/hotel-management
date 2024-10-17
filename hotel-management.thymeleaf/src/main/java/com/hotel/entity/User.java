@@ -1,5 +1,6 @@
 package com.hotel.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -27,6 +28,7 @@ public class User {
     private List<Address> addressList;
     
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @JsonBackReference
     private List<Booking> bookings;
     
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)

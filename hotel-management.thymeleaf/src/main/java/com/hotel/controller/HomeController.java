@@ -49,7 +49,6 @@ public class HomeController {
     
     @GetMapping("/rooms")
     public String rooms() {
-        System.out.println("This is Normal Room");
         return "/pages/rooms";
     }
     
@@ -63,8 +62,6 @@ public class HomeController {
             @Param("childCount") Integer childCount,
             Model model
     ) {
-        System.out.println(roomId + " " + checkIn + " " + checkOut + " " + adultCount + " " + childCount);
-        System.out.println("Math " + (adultCount * 10));
         RoomType roomType = roomService.getRoomTypeById(roomId);
         
         RoomReservation reservation = new RoomReservation();
@@ -89,8 +86,7 @@ public class HomeController {
     
     @GetMapping("/search-result")
     public String searchResult(@ModelAttribute RoomReservation roomReservation, Model model) {
-//        System.out.println(roomReservation);
-        List<RoomType> all = roomService.getAllRoomTypes();
+        List<RoomType> all = roomService.getAllAvailableRoomType(roomReservation);
         model.addAttribute("all", all);
         model.addAttribute("reserve", roomReservation);
         return "/pages/search-result";
@@ -110,7 +106,6 @@ public class HomeController {
     
     @GetMapping("/get-room-details")
     public String getRoomDetails(@ModelAttribute RoomReservation roomReservation, Model model) {
-        System.out.println(roomReservation);
 //        searchResult(roomReservation, model);
         return "redirect:/search-result";
     }
@@ -151,9 +146,7 @@ public class HomeController {
         totalPrice = Double.parseDouble(formattedPrice);
         request.setTotalPrice(totalPrice);
         
-        System.out.println(request);
         userService.bookRoom(request);
-        System.out.println("booked....");
         return "/pages/final-page";
     }
     

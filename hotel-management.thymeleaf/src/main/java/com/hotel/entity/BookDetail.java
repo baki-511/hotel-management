@@ -1,6 +1,5 @@
 package com.hotel.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,15 +11,19 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class Customer {
+public class BookDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer customerId;
+    private Integer bookDetailId;
+    
     private String firstName;
     private String lastName;
+    private String email;
     private String mobileNumber;
+    private String state;
+    private String city;
+    private String pincode;
     
-    @ManyToOne
-    @JsonBackReference
-    private User user;
+    @OneToOne
+    private Booking booking;
 }

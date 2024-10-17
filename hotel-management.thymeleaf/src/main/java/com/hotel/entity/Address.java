@@ -1,5 +1,6 @@
 package com.hotel.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -20,5 +21,6 @@ public class Address {
     private String pincode;
     
     @ManyToOne
+    @JsonBackReference
     private User user;
 }

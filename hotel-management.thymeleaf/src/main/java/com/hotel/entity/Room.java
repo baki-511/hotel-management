@@ -1,5 +1,6 @@
 package com.hotel.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -10,7 +11,6 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-@ToString
 public class Room {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,6 +23,7 @@ public class Room {
     private RoomType roomType;
     
     @OneToMany(mappedBy = "room")
+    @JsonBackReference
     private List<Booking> bookings;
     
     @OneToMany(mappedBy = "room")
