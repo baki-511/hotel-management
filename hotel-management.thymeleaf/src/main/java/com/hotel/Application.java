@@ -34,6 +34,10 @@ public class Application implements CommandLineRunner {
 	
 	@Override
 	public void run(String... args) throws Exception {
-	
+		roomRepository.findAll()
+				.forEach(r->{
+					r.setAvailable(true);
+//					roomRepository.save(r);
+				});
 	}
 }

@@ -60,12 +60,13 @@
                         <a class="nav-link" th:href=@{/contact-us}>Contact Us</a>
                     </li>
                     <li class="nav-item mt-3 mt-lg-0">
-                        <a class="main-btn" href="#blog">Book Now</a>
+                        <a class="main-btn" href="#" data-bs-toggle="modal" data-bs-target="#reg-modal">Book Now</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
+    <div th:replace="~{components/modal-form :: modal-form}"></div>
 </header>
 </body>
 </html>

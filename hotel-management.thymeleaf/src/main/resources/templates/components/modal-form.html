@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Modal Form</title>
+</head>
+<body>
+<div class="modal fade" id="reg-modal" tabindex="-1" th:fragment="modal-form">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Check Availability Form</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="right-section col-lg-12 col-12">
+                    <form th:action=@{/search-result} class="row">
+                        <div class="col-lg-12 mb-3">
+                            <input type="date" name="checkInTime"  class="form-control py-3" placeholder="Check In"/>
+                        </div>
+                        <div class="col-lg-12 mb-3">
+                            <input type="date" name="checkOutTime"  class="form-control py-3"
+                                   placeholder="Check Out"/>
+                        </div>
+                        <div class="col-lg-12 mb-3">
+                            <select name="adultCount" class="form-select py-3">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-12 mb-3">
+                            <select name="childCount" class="form-select py-3">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-12 mb-3">
+                            <button type="submit" class="btn btn-success col-12 py-2 rounded-2 px-lg-3">
+                                Check Availibility
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

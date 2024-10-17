@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -110,7 +111,7 @@ public class HomeController {
         return "redirect:/search-result";
     }
     
-    @GetMapping("/success/{roomId}")
+    @PostMapping("/success/{roomId}")
     public String success(
             @PathVariable Integer roomId,
             @Param("checkIn") LocalDate checkIn,
@@ -121,6 +122,11 @@ public class HomeController {
             Model model
     ) {
         BookingRequest request = new BookingRequest();
+        request.setCheckInDate(checkIn);
+        request.setCheckOutDate(checkOut);
+        request.setAdultCount(adultCount);
+        request.setChildCount(childCount);
+        
         request.setFirstName(customerDto.getFirstName());
         request.setLastName(customerDto.getLastName());
         request.setEmail(customerDto.getEmail());
@@ -138,7 +144,8 @@ public class HomeController {
         String formattedPrice = String.format("%.2f", totalPrice);
         totalPrice = Double.parseDouble(formattedPrice);
         request.setTotalPrice(totalPrice);
-
+        
+        System.out.println(request);
         return "/pages/final-page";
     }
     

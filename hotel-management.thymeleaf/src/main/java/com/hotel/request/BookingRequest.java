@@ -1,9 +1,6 @@
 package com.hotel.request;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDate;
 
@@ -11,6 +8,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Getter
 @Setter
+@ToString
 public class BookingRequest {
         private String firstName;
         private String lastName;
@@ -22,6 +20,8 @@ public class BookingRequest {
         private Integer roomId;
         private LocalDate checkInDate;
         private LocalDate checkOutDate;
+        private Integer adultCount;
+        private Integer childCount;
         private String paymentMethod;
         private Double totalPrice;
 }
