@@ -6,6 +6,7 @@ import com.hotel.request.BookingRequest;
 import com.hotel.request.CustomerDto;
 import com.hotel.request.RoomReservation;
 import com.hotel.service.RoomService;
+import com.hotel.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
@@ -20,6 +21,9 @@ import java.util.List;
 
 @Controller
 public class HomeController {
+    @Autowired
+    private UserService userService;
+    
     @Autowired
     private RoomService roomService;
     
@@ -136,6 +140,8 @@ public class HomeController {
         request.setPincode(customerDto.getPincode());
         request.setPaymentMethod(customerDto.getPaymentMethod());
         
+        request.setRoomId(roomId);
+        
         RoomType roomType = roomService.getRoomTypeById(roomId);
         Integer roomPrice = roomType.getPricePerNight();
         double gst = roomPrice * 0.18;
@@ -146,6 +152,8 @@ public class HomeController {
         request.setTotalPrice(totalPrice);
         
         System.out.println(request);
+        userService.bookRoom(request);
+        System.out.println("booked....");
         return "/pages/final-page";
     }
     

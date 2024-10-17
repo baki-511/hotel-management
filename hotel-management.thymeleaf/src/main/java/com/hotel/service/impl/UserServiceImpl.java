@@ -52,21 +52,27 @@ public class UserServiceImpl implements UserService {
         customer.setMobileNumber(bookingRequest.getPhone());
         customer.setFirstName(bookingRequest.getFirstName());
         customer.setLastName(bookingRequest.getLastName());
+        customer.setUser(user);
         
         List<Customer> customers = user.getCustomers();
+        if (customers == null) {
+            customers = new ArrayList<>();
+        }
         customers.add(customer);
-        
         user.setCustomers(customers);
 //        Add address to list
         List<Address> addressList = user.getAddressList();
+        if (addressList == null) {
+            addressList = new ArrayList<>();
+        }
         Address address = new Address();
         address.setCity(bookingRequest.getCity());
         address.setState(bookingRequest.getState());
         address.setPincode(bookingRequest.getPincode());
+        address.setUser(user);
         addressList.add(address);
 //        Save address
         user.setAddressList(addressList);
-        
         List<Booking> bookings;
         if (optionalUser.isPresent()) {
             User mainUser = optionalUser.get();
@@ -79,31 +85,29 @@ public class UserServiceImpl implements UserService {
         Booking booking = new Booking();
         booking.setCheckInDate(bookingRequest.getCheckInDate());
         booking.setCheckOutDate(bookingRequest.getCheckOutDate());
+        booking.setAdultCount(bookingRequest.getAdultCount());
+        booking.setChildCount(bookingRequest.getChildCount());
         booking.setTotalPrice(bookingRequest.getTotalPrice());
+        booking.setUser(user);
         
 //        Set the room Details
         RoomType roomType = roomTypeRepository.findById(bookingRequest.getRoomId())
                 .orElseThrow(() -> new RoomTypeNotAvailable(bookingRequest.getRoomId()));
-        
 //        Room
         Room room = roomRepository.findByRoomType(roomType).stream()
-                .filter(Room::isAvailable)
                 .findAny()
                 .orElseThrow(() -> new RoomNotFoundException("Sorry! Room Is NOT Available"));
-        room.setAvailable(false);
+//        room.setAvailable(false);
         booking.setRoom(room);
-        
 //        Set Payment Details
-        Payment payment = new Payment();
-        payment.setPaymentMethod(bookingRequest.getPaymentMethod());
-        payment.setAmount(bookingRequest.getTotalPrice());
-        payment.setPaymentStatus("Success");
-        booking.setPayment(payment);
-        
+//        Payment payment = new Payment();
+//        payment.setPaymentMethod(bookingRequest.getPaymentMethod());
+//        payment.setAmount(bookingRequest.getTotalPrice());
+//        payment.setPaymentStatus("Success");
+//        booking.setPayment(payment);
 //         Add Booking
         bookings.add(booking);
         user.setBookings(bookings);
-        
 //        Save Details In Databases
         return userRepository.save(user);
     }
