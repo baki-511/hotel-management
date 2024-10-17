@@ -2,6 +2,8 @@ package com.hotel.controller;
 
 import com.hotel.entity.BookDetail;
 import com.hotel.entity.Booking;
+import com.hotel.entity.Room;
+import com.hotel.entity.RoomType;
 import com.hotel.payload.GuestDetail;
 import com.hotel.request.RoomDto;
 import com.hotel.request.RoomTypeDto;
@@ -67,6 +69,20 @@ public class AdminController {
         GuestDetail guestDetail = new GuestDetail();
         model.addAttribute("bookings", allCustomerBookings);
         return "/admin/pages/all_bookings";
+    }
+    
+    @GetMapping("/all_rooms")
+    public String allRooms(Model model) {
+        List<Room> allRooms = roomService.getAllRooms();
+        model.addAttribute("rooms", allRooms);
+        return "/admin/pages/all_rooms";
+    }
+    
+    @GetMapping("/all_room_type")
+    public String allRoomTypes(Model model) {
+        List<RoomType> allRoomTypes = roomService.getAllRoomTypes();
+        model.addAttribute("roomTypes", allRoomTypes);
+        return "/admin/pages/all_room_type";
     }
     
 }

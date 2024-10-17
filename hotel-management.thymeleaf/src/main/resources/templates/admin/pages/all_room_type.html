@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Room Booking</title>
+    <!-- ======= Styles ====== -->
+    <!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">-->
+    <div th:replace="~{admin-common :: common(~{::link})}"></div>
+    <link rel="stylesheet" th:href=@{/css/admin/add-room-style.css}>
+</head>
+
+<body>
+<!-- =============== Navigation ================ -->
+<div class="admin-container">
+
+    <div th:replace="~{admin/components/navigation :: navigation}"></div>
+    <!-- ========================= Main ==================== -->
+    <div class="main">
+        <div th:replace="~{admin/components/topbar :: topbar}"></div>
+        <div th:replace="~{admin/components/all_room_type :: main}"></div>
+    </div>
+</div>
+
+<!-- =========== Scripts =========  -->
+
+<!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>-->
+<!--JavaScript Section -->
+<div th:replace="~{admin-common :: common_js(~{::script})}"></div>
+</body>
+</html>

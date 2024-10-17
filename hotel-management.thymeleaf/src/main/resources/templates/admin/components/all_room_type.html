@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0,
+           minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Main Page</title>
+</head>
+<body>
+<div  th:fragment="main">
+    <div class="container">
+        <h2 class="text-center py-2 bg-light">All Booking Details</h2>
+        <div class="card">
+            <table class="table">
+                <thead>
+                <tr class="fs-6 py-2 bg-success text-light">
+                    <th scope="col">ID</th>
+                    <th scope="col">Room Type</th>
+                    <th scope="col">Capacity</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="type : ${roomTypes}" class="py-3">
+                    <td th:text="${type.roomTypeId}"></td>
+                    <td th:text="${type.type}"></td>
+                    <td th:text="${type.capacity}"></td>
+                    <td th:text="${type.description}"></td>
+                    <td>
+                        <img alt="" width="160" height="100" th:src="|data:image/jpeg;base64,${type.image}|" class="rounded img-thumbnail">
+                    </td>
+                    <td th:text="${type.pricePerNight}"></td>
+                    <td>
+                        <a th:href="@{'edit/'+${type.roomTypeId}}" class="btn btn-warning"><i class="fa-regular fa-pen-to-square fa-xs"></i></a>
+                        <a th:href="@{'delete/'+${type.roomTypeId}}" class="btn btn-danger"><i class="fa-regular fa-trash-can fa-xs"></i></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
